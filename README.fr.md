@@ -5,86 +5,88 @@
 [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg?sanitize=true)](https://alpinejs.codewithhugo.com/chat/)
 
 Alpine.js offre les propriétés déclaratives et réactives des grands frameworks tels que Vue ou React à un coût bien moindre.
-Le DOM se manipule à la demande, et vous pouvez lui attribuer les comportements comme bon vous semble.
 
-Think of it like [Tailwind](https://tailwindcss.com/) for JavaScript.
+Le DOM est préservé, et vous pouvez lui attribuer les comportements comme bon vous semble.
 
-> Note: This tool's syntax is almost entirely borrowed from [Vue](https://vuejs.org/) (and by extension [Angular](https://angularjs.org/)). I am forever grateful for the gift they are to the web.
+C'est un peu le [Tailwind](https://tailwindcss.com/) du JavaScript.
 
-## Translated documentation
+> Note: La syntaxe de cet outil est presque entièrement emprunté de [Vue](https://vuejs.org/) (et par extension [Angular](https://angularjs.org/)). Je suis à jamais reconnaissant pour ce qu'ils ont apporté au web.
 
-| Language | Link for documentation |
+## Documentations traduites
+
+| Langue | Lien vers la documentation |
 | --- | --- |
-| Chinese Traditional | [**繁體中文說明文件**](./README.zh-TW.md) |
-| German | [**Dokumentation in Deutsch**](./README.de.md) |
-| Indonesian | [**Dokumentasi Bahasa Indonesia**](./README.id.md) |
-| Japanese | [**日本語ドキュメント**](./README.ja.md) |
-| Portuguese | [**Documentação em Português**](./README.pt.md) |
-| Russian | [**Документация на русском**](./README.ru.md) |
-| Spanish | [**Documentación en Español**](./README.es.md) |
+| Chinois Traditionel | [**繁體中文說明文件**](./README.zh-TW.md) |
+| Allemand | [**Dokumentation in Deutsch**](./README.de.md) |
+| Indonesien | [**Dokumentasi Bahasa Indonesia**](./README.id.md) |
+| Japonais | [**日本語ドキュメント**](./README.ja.md) |
+| Portuguais | [**Documentação em Português**](./README.pt.md) |
+| Russe | [**Документация на русском**](./README.ru.md) |
+| Espagnol | [**Documentación en Español**](./README.es.md) |
+| français | [**Documentation en Français**](./README.fr.md) |
 
-## Install
+## Installation
 
-**From CDN:** Add the following script to the end of your `<head>` section.
+**Avec CDN:** Ajoutez le script suivant à la fin de votre section `<head>`.
 ```html
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 ```
 
-That's it. It will initialize itself.
+C'est tout. L'initialisation est automatique.
 
-For production environments, it's recommended to pin a specific version number in the link to avoid unexpected breakage from newer versions.
-For example, to use version `2.7.3` (latest):
+Dans les environnements de production, il est recommandé d'inscrire un numéro de version spécifique dans le lien, afin d'éviter qu'une nouvelle version ne provoque un comportement inattendu.
+Par exemple, pour utiliser la version `2.7.3` (la dernière) :
 ```html
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 ```
 
-**From npm:** Install the package from npm.
+**Avec npm:** Installer le paquet avec npm.
 ```js
 npm i alpinejs
 ```
 
-Include it in your script.
+Importez-le dans votre script.
 ```js
 import 'alpinejs'
 ```
 
-**For IE11 support** Use the following scripts instead.
+**Pour la compatibilité IE11** utilisez plutôt les scripts suivants.
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
 ```
 
-The pattern above is the [module/nomodule pattern](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/) that will result in the modern bundle automatically loaded on modern browsers, and the IE11 bundle loaded automatically on IE11 and other legacy browsers.
+Le schéma ci-dessus représente le [schéma module/nomodule](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/). Il permet  de faire en sorte que le pack soit automatiquement chargé dans les navigateurs modernes, mais aussi pour IE11 et les autres navigateurs anciens.
 
-## Use
+## Utilisation
 
-*Dropdown/Modal*
+*Menu déroulant/Modal*
 ```html
 <div x-data="{ open: false }">
-    <button @click="open = true">Open Dropdown</button>
+    <button @click="open = true">Ouvrir le menu</button>
 
     <ul
         x-show="open"
         @click.away="open = false"
     >
-        Dropdown Body
+        Elément de menu
     </ul>
 </div>
 ```
 
-*Tabs*
+*Onglets*
 ```html
 <div x-data="{ tab: 'foo' }">
     <button :class="{ 'active': tab === 'foo' }" @click="tab = 'foo'">Foo</button>
     <button :class="{ 'active': tab === 'bar' }" @click="tab = 'bar'">Bar</button>
 
-    <div x-show="tab === 'foo'">Tab Foo</div>
-    <div x-show="tab === 'bar'">Tab Bar</div>
+    <div x-show="tab === 'foo'">Onglet Foo</div>
+    <div x-show="tab === 'bar'">Onglet Bar</div>
 </div>
 ```
 
-You can even use it for non-trivial things:
-*Pre-fetching a dropdown's HTML content on hover.*
+Vous pouvez même l'utiliser pour faire des choses moins courantes:
+*Précharger le HTML d'un élément de menu lors du survol.*
 ```html
 <div x-data="{ open: false }">
     <button
@@ -94,54 +96,54 @@ You can even use it for non-trivial things:
                 .then(html => { $refs.dropdown.innerHTML = html })
         "
         @click="open = true"
-    >Show Dropdown</button>
+    >Afficher Menu</button>
 
     <div x-ref="dropdown" x-show="open" @click.away="open = false">
-        Loading Spinner...
+        Chargement Spinner...
     </div>
 </div>
 ```
 
-## Learn
+## Apprentissage
 
-There are 14 directives available to you:
+Il existe 14 directives disponibles:
 
 | Directive | Description |
 | --- | --- |
-| [`x-data`](#x-data) | Declares a new component scope. |
-| [`x-init`](#x-init) | Runs an expression when a component is initialized. |
-| [`x-show`](#x-show) | Toggles `display: none;` on the element depending on expression (true or false). |
-| [`x-bind`](#x-bind) | Sets the value of an attribute to the result of a JS expression. |
-| [`x-on`](#x-on) | Attaches an event listener to the element. Executes JS expression when emitted. |
-| [`x-model`](#x-model) | Adds "two-way data binding" to an element. Keeps input element in sync with component data. |
-| [`x-text`](#x-text) | Works similarly to `x-bind`, but will update the `innerText` of an element. |
-| [`x-html`](#x-html) | Works similarly to `x-bind`, but will update the `innerHTML` of an element. |
-| [`x-ref`](#x-ref) | Convenient way to retrieve raw DOM elements out of your component. |
-| [`x-if`](#x-if) | Remove an element completely from the DOM. Needs to be used on a `<template>` tag. |
-| [`x-for`](#x-for) | Create new DOM nodes for each item in an array. Needs to be used on a `<template>` tag. |
-| [`x-transition`](#x-transition) | Directives for applying classes to various stages of an element's transition. |
-| [`x-spread`](#x-spread) | Allows you to bind an object of Alpine directives to an element for better reusability. |
-| [`x-cloak`](#x-cloak) | This attribute is removed when Alpine initializes. Useful for hiding pre-initialized DOM. |
+| [`x-data`](#x-data) | Déclare la portée d'un nouveau composant. |
+| [`x-init`](#x-init) | Exécute une expression lors de l'initialisation d'un composant. |
+| [`x-show`](#x-show) | Alterne `display: none;` sur l'élément selon l'expression (true ou false). |
+| [`x-bind`](#x-bind) | Fixe la valeur d'un attribut au résultat d'une expression JS. |
+| [`x-on`](#x-on) | Attache un écouteur d'évènement à l'élément. Exécute une expression JS lorsque l'évènement est déclenché. |
+| [`x-model`](#x-model) | Ajoute une liaison de données bidirectionnelle (two-way data binding) à un élément. Conserve la synchronisation de l'élément d'entrée avec les données du composant. |
+| [`x-text`](#x-text) | Fonctionne de manière similaire à `x-bind`, mais avec mise à jour du `innerText` d'un élément. |
+| [`x-html`](#x-html) | Fonctionne de manière similaire à `x-bind`, mais avec mise à jour du `innerHTML` d'un élément. |
+| [`x-ref`](#x-ref) | Un moyen pratique de récupérer des éléments bruts du DOM de votre composant. |
+| [`x-if`](#x-if) | Supprime totalement un élément du DOM. Doit s'utiliser avec le tag `<template>`. |
+| [`x-for`](#x-for) | Crée de nouveaux noeuds DOM pour chaque élément d'un tableau. Doit s'utiliser avec le tag `<template>`. |
+| [`x-transition`](#x-transition) | Directives pour renseigner les classes aux différentes étapes de transition d'un élément. |
+| [`x-spread`](#x-spread) | Permet de lier l'objet de directives d'Alpine à un élément pour une meilleure réutilisation. |
+| [`x-cloak`](#x-cloak) | Cet attribut est supprimé lorsque Alpine s'initialise. Utile pour masquer les DOM pré-initialisés. |
 
-And 6 magic properties:
+Et 6 propriétés magiques:
 
-| Magic Properties | Description |
+| Propriétés magiques | Description |
 | --- | --- |
-| [`$el`](#el) |  Retrieve the root component DOM node. |
-| [`$refs`](#refs) | Retrieve DOM elements marked with `x-ref` inside the component. |
-| [`$event`](#event) | Retrieve the native browser "Event" object within an event listener.  |
-| [`$dispatch`](#dispatch) | Create a `CustomEvent` and dispatch it using `.dispatchEvent()` internally. |
-| [`$nextTick`](#nexttick) | Execute a given expression AFTER Alpine has made its reactive DOM updates. |
-| [`$watch`](#watch) | Will fire a provided callback when a component property you "watched" gets changed. |
+| [`$el`](#el) |  Récupère le nœud DOM du composant racine. |
+| [`$refs`](#refs) | Récupère les éléments du DOM marqués par `x-ref` à l'intérieur du composant. |
+| [`$event`](#event) | Récupère l'objet natif "Event" du navigateur dans un écouteur d'évènements.  |
+| [`$dispatch`](#dispatch) | Crée un `CustomEvent` et le distribue à l'aide de `.dispatchEvent()` en interne. |
+| [`$nextTick`](#nexttick) | Exécute une expression donnée APRES qu'Alpine ait fait ses mises à jour réactives du DOM. |
+| [`$watch`](#watch) | Effectue un rappel (callback) préalablement défini lorsque la propriété d'un composant "surveillé" (watch) est modifiée. |
 
 
 ## Sponsors
 
 <img width="33%" src="https://refactoringui.nyc3.cdn.digitaloceanspaces.com/tailwind-logo.svg" alt="Tailwind CSS">
 
-**Want your logo here? [DM on Twitter](https://twitter.com/calebporzio)**
+**Votre logo ici ? [DM sur Twitter](https://twitter.com/calebporzio)**
 
-## Community Projects
+## Projets Communautaires
 
 * [AlpineJS Weekly Newsletter](https://alpinejs.codewithhugo.com/newsletter/)
 * [Spruce (State Management)](https://github.com/ryangjchandler/spruce)
@@ -155,24 +157,24 @@ And 6 magic properties:
 
 ### `x-data`
 
-**Example:** `<div x-data="{ foo: 'bar' }">...</div>`
+**Exemple:** `<div x-data="{ foo: 'bar' }">...</div>`
 
 **Structure:** `<div x-data="[object literal]">...</div>`
 
-`x-data` declares a new component scope. It tells the framework to initialize a new component with the following data object.
+`x-data` déclare la portée d'un nouveau composant. Indique au framework d'initialiser un nouveau composant avec le prochain objet de données.
 
-Think of it like the `data` property of a Vue component.
+Il faut voir cela comme la propriété de `données` d'un composant Vue.
 
-**Extract Component Logic**
+**Extraction de la Logique des Composants**
 
-You can extract data (and behavior) into reusable functions:
+Vous pouvez extraire les données (et le comportement) en fonctions réutilisables :
 
 ```html
 <div x-data="dropdown()">
-    <button x-on:click="open">Open</button>
+    <button x-on:click="open">Ouvrir</button>
 
     <div x-show="isOpen()" x-on:click.away="close">
-        // Dropdown
+        // Menu déroulant
     </div>
 </div>
 
@@ -188,10 +190,10 @@ You can extract data (and behavior) into reusable functions:
 </script>
 ```
 
-> **For bundler users**, note that Alpine.js accesses functions that are in the global scope (`window`), you'll need to explicitly assign your functions to `window` in order to use them with `x-data` for example `window.dropdown = function () {}` (this is because with Webpack, Rollup, Parcel etc. `function`'s you define will default to the module's scope not `window`).
+> **Pour les utilisateurs de modules bundler**, notez que Alpine.js accède à des fonctions qui sont dans la portée globale (`window`). Vous devrez explicitement assigner vos fonctions à `window` pour les utiliser avec `x-data`. Par exemple `window.dropdown = function () {}` ( c'est parce qu'avec Webpack, Rollup, Parcel etc. les fonctions que vous écrivez sont par défaut dans la portée du module et non dans celle de la page - `window`).
 
 
-You can also mix-in multiple data objects using object destructuring:
+Vous pouvez également mélanger plusieurs objets de données en utilisant la décomposition d'objet :
 
 ```html
 <div x-data="{...dropdown(), ...tabs()}">
@@ -200,50 +202,50 @@ You can also mix-in multiple data objects using object destructuring:
 ---
 
 ### `x-init`
-**Example:** `<div x-data="{ foo: 'bar' }" x-init="foo = 'baz'"></div>`
+**Exemple:** `<div x-data="{ foo: 'bar' }" x-init="foo = 'baz'"></div>`
 
 **Structure:** `<div x-data="..." x-init="[expression]"></div>`
 
-`x-init` runs an expression when a component is initialized.
+`x-init` exécute une expression lorsqu'un composant est initialisé.
 
-If you wish to run code AFTER Alpine has made its initial updates to the DOM (something like a `mounted()` hook in VueJS), you can return a callback from `x-init`, and it will be run after:
+Si vous souhaitez exécuter du code APRES qu'Alpine ait effectué ses mises à jour initiales dans le DOM (un peu comme le hook `mounted()` de VueJS), vous pouvez retourner un callback depuis `x-init`, et il sera ensuite exécuté :
 
-`x-init="() => { // we have access to the post-dom-initialization state here // }"`
+`x-init="() => { // on a ici accès à l'état du DOM post-initialisation // }"`
 
 ---
 
 ### `x-show`
-**Example:** `<div x-show="open"></div>`
+**Exemple:** `<div x-show="open"></div>`
 
 **Structure:** `<div x-show="[expression]"></div>`
 
-`x-show` toggles the `display: none;` style on the element depending if the expression resolves to `true` or `false`.
+`x-show` alterne le style `display: none;` sur l'élément selon que l'expression retourne `true` ou `false`.
 
 **x-show.transition**
 
-`x-show.transition` is a convenience API for making your `x-show`s more pleasant using CSS transitions.
+`x-show.transition` est une API de commodité pour rendre vos `x-show` plus agréables en utilisant des transitions CSS.
 
 ```html
 <div x-show.transition="open">
-    These contents will be transitioned in and out.
+    Le contenu ici fera l'objet de transitions "in" et "out".
 </div>
 ```
 
 | Directive | Description |
 | --- | --- |
-| `x-show.transition` | A simultaneous fade and scale. (opacity, scale: 0.95, timing-function: cubic-bezier(0.4, 0.0, 0.2, 1), duration-in: 150ms, duration-out: 75ms)
-| `x-show.transition.in` | Only transition in. |
-| `x-show.transition.out` | Only transition out. |
-| `x-show.transition.opacity` | Only use the fade. |
-| `x-show.transition.scale` | Only use the scale. |
-| `x-show.transition.scale.75` | Customize the CSS scale transform `transform: scale(.75)`. |
-| `x-show.transition.duration.200ms` | Sets the "in" transition to 200ms. The out will be set to half that (100ms). |
-| `x-show.transition.origin.top.right` | Customize the CSS transform origin `transform-origin: top right`. |
-| `x-show.transition.in.duration.200ms.out.duration.50ms` | Different durations for "in" and "out". |
+| `x-show.transition` | Fondu et échelle simultanés. (opacity, scale: 0.95, timing-function: cubic-bezier(0.4, 0.0, 0.2, 1), duration-in: 150ms, duration-out: 75ms)
+| `x-show.transition.in` | Transition `in` seule. |
+| `x-show.transition.out` | Transition `out` seule. |
+| `x-show.transition.opacity` |Fondu seul. |
+| `x-show.transition.scale` | Echelle seule. |
+| `x-show.transition.scale.75` | Personnalise la modification CSS de l'échelle `transform: scale(.75)`. |
+| `x-show.transition.duration.200ms` | Fixe la transition "in" à 200 ms. La transition "out" sera fixée à la moitié de cette valeur (100 ms). |
+| `x-show.transition.origin.top.right` | Personnalise l'origine de la transformation CSS `transform-origin: top right`. |
+| `x-show.transition.in.duration.200ms.out.duration.50ms` | Durées différentes pour "in" et "out". |
 
-> Note: All of these transition modifiers can be used in conjunction with each other. This is possible (although ridiculous lol): `x-show.transition.in.duration.100ms.origin.top.right.opacity.scale.85.out.duration.200ms.origin.bottom.left.opacity.scale.95`
+> Note: Tous ces modificateurs de transition peuvent être utilisés conjointement les uns avec les autres. Il est même possible de faire ceci (bien que ridicule lol): `x-show.transition.in.duration.100ms.origin.top.right.opacity.scale.85.out.duration.200ms.origin.bottom.left.opacity.scale.95`
 
-> Note: `x-show` will wait for any children to finish transitioning out. If you want to bypass this behavior, add the `.immediate` modifer:
+> Note: `x-show` attendra que les objets enfants aient terminé leur transition. Si vous voulez contourner ce comportement, ajoutez le modificateur `.immediate` :
 ```html
 <div x-show.immediate="open">
     <div x-show.transition="open">
@@ -253,51 +255,51 @@ If you wish to run code AFTER Alpine has made its initial updates to the DOM (so
 
 ### `x-bind`
 
-> Note: You are free to use the shorter ":" syntax: `:type="..."`.
+> Note: vous êtes libre d'utiliser la syntaxe ":" plus courte: `:type="..."`.
 
-**Example:** `<input x-bind:type="inputType">`
+**Exemple:** `<input x-bind:type="inputType">`
 
 **Structure:** `<input x-bind:[attribute]="[expression]">`
 
-`x-bind` sets the value of an attribute to the result of a JavaScript expression. The expression has access to all the keys of the component's data object, and will update every-time its data is updated.
+`x-bind` fixe la valeur d'un attribut au résultat d'une expression JavaScript. Cette expression a accès à toutes les clés de l'objet de données du composant, et se met à jour à chaque fois que ses données changent.
 
-> Note: attribute bindings ONLY update when their dependencies update. The framework is smart enough to observe data changes and detect which bindings care about them.
+> Note: les liaisons d'attributs (attribute bindings) ne se mettent à jour QUE lorsque leurs dépendances changent. Le framework est suffisamment intelligent pour observer les changements de données et détecter les liens qui les concernent.
 
-**`x-bind` for class attributes**
+**`x-bind` pour les attributs de classe**
 
-`x-bind` behaves a little differently when binding to the `class` attribute.
+`x-bind` se comporte un peu différemment lorsqu'il est lié à l'attribut `class`.
 
-For classes, you pass in an object whose keys are class names, and values are boolean expressions to determine if those class names are applied or not.
+En ce qui concerne les classes, vous passez un objet dont les clés sont des noms de classe, et les valeurs sont des expressions booléennes pour déterminer si ces noms de classe sont appliqués ou non.
 
-For example:
+Par exemple:
 `<div x-bind:class="{ 'hidden': foo }"></div>`
 
-In this example, the "hidden" class will only be applied when the value of the `foo` data attribute is `true`.
+Dans cet exemple, la classe "hidden" ne sera appliquée que si la valeur de l'attribut de données `foo` est `true`.
 
-**`x-bind` for boolean attributes**
+**`x-bind` pour les attributs booléens**
 
-`x-bind` supports boolean attributes in the same way as value attributes, using a variable as the condition or any JavaScript expression that resolves to `true` or `false`.
+`x-bind` supporte les attributs booléens de la même manière que les attributs de valeur, en utilisant une variable comme condition ou toute expression JavaScript qui se résout en `true` ou `false`.
 
-For example:
+Par exemple:
 ```html
-<!-- Given: -->
-<button x-bind:disabled="myVar">Click me</button>
+<!-- Soit: -->
+<button x-bind:disabled="myVar">Cliquez moi</button>
 
-<!-- When myVar == true: -->
-<button disabled="disabled">Click me</button>
+<!-- Lorsque myVar == true: -->
+<button disabled="disabled">Cliquez moi</button>
 
-<!-- When myVar == false: -->
-<button>Click me</button>
+<!-- Lorsque myVar == false: -->
+<button>Cliquez moi</button>
 ```
 
-This will add or remove the `disabled` attribute when `myVar` is true or false respectively.
+Cela ajoute ou supprime l'attribut `disabled` lorsque `myVar` est respectivement vrai ou faux.
 
-Boolean attributes are supported as per the [HTML specification](https://html.spec.whatwg.org/multipage/indices.html#attributes-3:boolean-attribute), for example `disabled`, `readonly`, `required`, `checked`, `hidden`, `selected`, `open`, etc.
+Les attributs booléens sont pris en charge conformément à la [spécification HTML](https://html.spec.whatwg.org/multipage/indices.html#attributes-3:boolean-attribute), par exemple `disabled`, `readonly`, `required`, `checked`, `hidden`, `selected`, `open`, etc.
 
-> Note: If you need a false state to show for your attribute, such as `aria-*`, chain `.toString()` to the value while binding to the attribute. For example: `:aria-expanded="isOpen.toString()"` would persist whether  `isOpen` was `true` or `false`.
+> Note: Si vous avez besoin d'un état `false` pour afficher un attribut, comme par exemple `aria-*`, chainez `.toString()` à la valeur tout en liant (bind) l'attribut. Par exemple: `:aria-expanded="isOpen.toString()"` va persister, que `isOpen` soit `true` ou `false`.
 
-**`.camel` modifier**
-**Example:** `<svg x-bind:view-box.camel="viewBox">`
+**Modificateur `.camel`**
+**Exemple:** `<svg x-bind:view-box.camel="viewBox">`
 
 The `camel` modifier will bind to the camel case equivalent of the attribute name. In the example above, the value of `viewBox` will be bound the `viewBox` attribute as opposed to the `view-box` attribute.
 
