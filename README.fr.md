@@ -4,7 +4,7 @@
 ![npm version](https://img.shields.io/npm/v/alpinejs)
 [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg?sanitize=true)](https://alpinejs.codewithhugo.com/chat/)
 
-Alpine.js offre les propriétés déclaratives et réactives des grands frameworks tels que Vue ou React à un coût bien moindre.
+Alpine.js offre les propriétés déclaratives et réactives de grands frameworks tels que Vue ou React à un coût bien moindre.
 
 Le DOM est préservé, et vous pouvez lui attribuer les comportements comme bon vous semble.
 
