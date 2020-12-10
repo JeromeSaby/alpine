@@ -157,9 +157,9 @@ Et 6 propriétés magiques:
 
 ### `x-data`
 
-**Exemple:** `<div x-data="{ foo: 'bar' }">...</div>`
+**Exemple :** `<div x-data="{ foo: 'bar' }">...</div>`
 
-**Structure:** `<div x-data="[object literal]">...</div>`
+**Structure :** `<div x-data="[object literal]">...</div>`
 
 `x-data` déclare la portée d'un nouveau composant. Indique au framework d'initialiser un nouveau composant avec le prochain objet de données.
 
@@ -202,9 +202,9 @@ Vous pouvez également mélanger plusieurs objets de données en utilisant la d�
 ---
 
 ### `x-init`
-**Exemple:** `<div x-data="{ foo: 'bar' }" x-init="foo = 'baz'"></div>`
+**Exemple :** `<div x-data="{ foo: 'bar' }" x-init="foo = 'baz'"></div>`
 
-**Structure:** `<div x-data="..." x-init="[expression]"></div>`
+**Structure :** `<div x-data="..." x-init="[expression]"></div>`
 
 `x-init` exécute une expression lorsqu'un composant est initialisé.
 
@@ -397,7 +397,7 @@ Le modificateur `camel` attache un écouteur d'évènement en version "camel cas
 ### `x-model`
 **Exemple :** `<input type="text" x-model="foo">`
 
-**Structure:** `<input type="text" x-model="[data item]">`
+**Structure :** `<input type="text" x-model="[data item]">`
 
 `x-model` ajoute à un élément une liaison de données à double sens ("two-way data binding"). En d'autres termes, la valeur de l'élément d'entrée sera maintenue en synchronisation avec la valeur de l'élément de données du composant.
 
@@ -427,7 +427,7 @@ Pour personnaliser cette fonction, vous pouvez définir un temps d'attente :
 ### `x-text`
 **Exemple :** `<span x-text="foo"></span>`
 
-**Structure:** `<span x-text="[expression]"`
+**Structure :** `<span x-text="[expression]"`
 
 `x-text` fonctionne comme `x-bind`, sauf qu'au lieu de mettre à jour la valeur d'un attribut, il mettra à jour le `innerText` d'un élément.
 
@@ -436,7 +436,7 @@ Pour personnaliser cette fonction, vous pouvez définir un temps d'attente :
 ### `x-html`
 **Exemple :** `<span x-html="foo"></span>`
 
-**Structure:** `<span x-html="[expression]"`
+**Structure :** `<span x-html="[expression]"`
 
 `x-html` fonctionne comme `x-bind`, sauf qu'au lieu de mettre à jour la valeur d'un attribut, il mettra à jour le `innerHTML` d'un élément.
 
@@ -449,7 +449,7 @@ Pour personnaliser cette fonction, vous pouvez définir un temps d'attente :
 ### `x-ref`
 **Exemple :** `<div x-ref="foo"></div><button x-on:click="$refs.foo.innerText = 'bar'"></button>`
 
-**Structure:** `<div x-ref="[ref name]"></div><button x-on:click="$refs.[ref name].innerText = 'bar'"></button>`
+**Structure :** `<div x-ref="[ref name]"></div><button x-on:click="$refs.[ref name].innerText = 'bar'"></button>`
 
 La fonction `x-ref` offre un moyen pratique de récupérer les éléments DOM bruts de votre composant. En plaçant un attribut `x-ref` sur un élément, vous le rendez disponible à tous les gestionnaires d'événements à l'intérieur d'un objet appelé `$refs`.
 
@@ -462,7 +462,7 @@ C'est une alternative utile à la mise en place d'identifiants et à l'utilisati
 ### `x-if`
 **Exemple :** `<template x-if="true"><div>Quelques éléments</div></template>`
 
-**Structure:** `<template x-if="[expression]"><div>Quelques éléments</div></template>`
+**Structure :** `<template x-if="[expression]"><div>Quelques éléments</div></template>`
 
 Pour les cas où `x-show` n'est pas suffisant (`x-show` met un élément à `display : none` s'il est faux), `x-if` peut être utilisé pour supprimer complètement un élément du DOM.
 
@@ -482,7 +482,7 @@ Il est important que `x-if` soit utilisé sur des balises `<template></template>
 </template>
 ```
 
-> Note : la liaison `:key` est facultative, mais fortement recommandée.
+> Note : la liaison `:key` est facultative, mais FORTEMENT recommandée.
 
 La fonction `x-for` est disponible dans les cas où vous souhaitez créer de nouveaux nœuds DOM pour chaque élément d'un tableau. Cela devrait ressembler à `v-for` dans Vue, à l'exception de la nécessité d'exister sur une balise `template`, et non sur un élément DOM ordinaire.
 
